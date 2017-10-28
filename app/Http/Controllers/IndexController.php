@@ -19,6 +19,28 @@ class IndexController extends Controller
         $portfolios = Portfolio::get(['name', 'filter', 'images']);
         $services = Service::where('id', '<', 20)->get();
         $peoples = People::take(3)->get();
-        return view('site.index');
+
+        $menu = array();
+        foreach ($pages as $page) {
+            $item = array('title' => $page->name, 'alias' => $page->alias);
+            array_push($menu, $item);
+        }
+        $item = array('title' => 'Services', 'alias' => 'services');
+        array_push($menu, $item);
+        $item = array('title' => 'Portfolio', 'alias' => 'Portfolio');
+        array_push($menu, $item);
+        $item = array('title' => 'Team', 'alias' => 'team');
+        array_push($menu, $item);
+        $item = array('title' => 'Contact', 'alias' => 'contact');
+        array_push($menu, $item);
+
+//        dd($menu);
+        return view('site.index', array(
+            'menu' => $menu,
+            'pages' => $pages,
+            'services' => $services,
+            'portfolios' => $portfolios,
+            'peoples' => $peoples
+        ));
     }
 }
