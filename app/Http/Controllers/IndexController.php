@@ -9,6 +9,7 @@ use App\Service;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -19,6 +20,7 @@ class IndexController extends Controller
         $portfolios = Portfolio::get(['name', 'filter', 'images']);
         $services = Service::where('id', '<', 20)->get();
         $peoples = People::take(3)->get();
+        $tags = DB::table('portfolios')->distinct()->lists('filter');
 
         $menu = array();
         foreach ($pages as $page) {
@@ -40,7 +42,8 @@ class IndexController extends Controller
             'pages' => $pages,
             'services' => $services,
             'portfolios' => $portfolios,
-            'peoples' => $peoples
+            'peoples' => $peoples,
+            'tags'=>$tags
         ));
     }
 }
