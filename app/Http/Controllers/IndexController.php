@@ -46,7 +46,9 @@ class IndexController extends Controller
             'tags'=>$tags1
         ));
     }
-
+    public function fu33cc(){
+        return 0;
+    }
     public function fucc(){
         return 0;
     }
