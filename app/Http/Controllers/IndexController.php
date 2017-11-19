@@ -19,10 +19,10 @@ class IndexController extends Controller
         $pages = Page::all();
         $portfolios = Portfolio::get(['name', 'filter', 'images']);
         $services = Service::where('id', '<', 20)->get();
-        $peoples = People::take(3)->get();
-        $tags = DB::table('portfolios')->distinct()->lists('filter');
+        $peoples1 = People::take(3)->get();
+        $tags1 = DB::table('portfolios')->distinct()->lists('filter');
 
-        $menu = array();
+        $menu1 = array();
         foreach ($pages as $page) {
             $item = array('title' => $page->name, 'alias' => $page->alias);
             array_push($menu, $item);
@@ -38,12 +38,18 @@ class IndexController extends Controller
 
 //        dd($menu);
         return view('site.index', array(
-            'menu' => $menu,
-            'pages' => $pages,
-            'services' => $services,
+            '1' => $menu,
+            '2pages' => $pages,
+            '3services' => $services,
             'portfolios' => $portfolios,
-            'peoples' => $peoples,
-            'tags'=>$tags
+            'peoples' => $peoples1,
+            'tags'=>$tags1
         ));
     }
+
+    public function fucc(){
+        return 0;
+    }
+
+
 }
