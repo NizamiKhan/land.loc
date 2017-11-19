@@ -46,4 +46,8 @@ class IndexController extends Controller
             'tags'=>$tags
         ));
     }
+
+    public function newFunc1(){
+        return 'as';
+    }
 }
