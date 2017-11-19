@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class IndexController extends Controller
 {
     //
-    public function execute(Request $request)
+    public function newfunc(Request $request)
     {
         $pages = Page::all();
         $portfolios = Portfolio::get(['name', 'filter', 'images']);
@@ -48,6 +48,9 @@ class IndexController extends Controller
     }
 
     public function newFunc1(){
+        return 'as';
+    }
+    public function newFunc2(){
         return 'as';
     }
 }
